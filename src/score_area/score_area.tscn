@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyfc4soxt842j"]
+
+[ext_resource type="Script" uid="uid://bj8mpylql02cw" path="res://src/score_area/score_area.gd" id="1_an1vs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an1vs"]
+
+[node name="score_area" type="Area2D"]
+scale = Vector2(0.4, 40)
+script = ExtResource("1_an1vs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_an1vs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvqmiify8hqn2"]
+
+[ext_resource type="PackedScene" uid="uid://bughkjrnj1w1m" path="res://src/player_pad/playerPad.tscn" id="1_43c6p"]
+[ext_resource type="Script" uid="uid://gadpydbl2u3j" path="res://src/world/world.gd" id="1_l0av5"]
+[ext_resource type="PackedScene" uid="uid://0fodw7fiuml2" path="res://src/enemy_pad/enemy_pad.tscn" id="2_l0av5"]
+[ext_resource type="PackedScene" uid="uid://cip3jxd0u42vt" path="res://src/ball/ball.tscn" id="3_5kmgb"]
+[ext_resource type="Script" uid="uid://xlqssur17tjl" path="res://src/world/pause_handler.gd" id="6_5kmgb"]
+[ext_resource type="PackedScene" uid="uid://cyfc4soxt842j" path="res://src/score_area/score_area.tscn" id="6_l0av5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qwtu"]
+size = Vector2(8, 640)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t101k"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_l0av5")
+
+[node name="playerPad" parent="." instance=ExtResource("1_43c6p")]
+position = Vector2(40, 240)
+collision_mask = 4
+
+[node name="enemyPad" parent="." instance=ExtResource("2_l0av5")]
+position = Vector2(600, 240)
+collision_mask = 4
+
+[node name="ball" parent="." instance=ExtResource("3_5kmgb")]
+position = Vector2(320, 120)
+collision_layer = 2
+collision_mask = 5
+
+[node name="walls" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="down" type="CollisionShape2D" parent="walls"]
+position = Vector2(320, 396)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0qwtu")
+
+[node name="Sprite_down" type="Sprite2D" parent="walls/down"]
+position = Vector2(3.05176e-05, -2.42516e-06)
+scale = Vector2(7.90729, 639.764)
+texture = SubResource("CanvasTexture_t101k")
+
+[node name="top" type="CollisionShape2D" parent="walls"]
+position = Vector2(320, 80)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_0qwtu")
+
+[node name="Sprite_top" type="Sprite2D" parent="walls/top"]
+position = Vector2(-5.96046e-08, 3.54275e-06)
+scale = Vector2(7.90729, 639.845)
+texture = SubResource("CanvasTexture_t101k")
+
+[node name="score_area_left" parent="walls" instance=ExtResource("6_l0av5")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="score_area_right" parent="walls" instance=ExtResource("6_l0av5")]
+position = Vector2(640, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="UI" type="Node" parent="."]
+
+[node name="game_msg" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+offset_left = 223.0
+offset_top = 163.0
+offset_right = 426.0
+offset_bottom = 280.0
+text = "Press space to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy_score" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 447.0
+offset_top = 51.0
+offset_right = 634.0
+offset_bottom = 74.0
+text = "default"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="player_score" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 6.0
+offset_top = 51.0
+offset_right = 62.0
+offset_bottom = 74.0
+text = "default"
+vertical_alignment = 1
+
+[node name="unpause_handler" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("6_5kmgb")
+
+[connection signal="scored" from="walls/score_area_left" to="." method="_on_enemy_score"]
+[connection signal="scored" from="walls/score_area_right" to="." method="_on_player_score"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bod4vtpnax5hg"]
+
+[ext_resource type="Texture2D" uid="uid://b18gwcpeir0np" path="res://asset/separator.png" id="1_sxypg"]
+
+[node name="seperator" type="Sprite2D"]
+texture = ExtResource("1_sxypg")
+offset = Vector2(320, 200)
