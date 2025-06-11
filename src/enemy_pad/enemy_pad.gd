@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 const SPEED := 3.5
 var ball : CharacterBody2D
