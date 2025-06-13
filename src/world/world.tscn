@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvqmiify8hqn2"]
+[gd_scene load_steps=11 format=3 uid="uid://bvqmiify8hqn2"]
 
 [ext_resource type="PackedScene" uid="uid://bughkjrnj1w1m" path="res://src/player_pad/playerPad.tscn" id="1_43c6p"]
 [ext_resource type="Script" uid="uid://gadpydbl2u3j" path="res://src/world/world.gd" id="1_l0av5"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://cip3jxd0u42vt" path="res://src/ball/ball.tscn" id="3_5kmgb"]
 [ext_resource type="Script" uid="uid://xlqssur17tjl" path="res://src/world/pause_handler.gd" id="6_5kmgb"]
 [ext_resource type="PackedScene" uid="uid://cyfc4soxt842j" path="res://src/score_area/score_area.tscn" id="6_l0av5"]
+[ext_resource type="Texture2D" uid="uid://csrykq8pyrgmx" path="res://asset/hearts.png" id="6_wg6dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qwtu"]
 size = Vector2(8, 640)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_t101k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6dy"]
+atlas = ExtResource("6_wg6dd")
+region = Rect2(2, 20, 13, 12)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_l0av5")
@@ -24,7 +29,7 @@ position = Vector2(600, 240)
 collision_mask = 4
 
 [node name="ball" parent="." instance=ExtResource("3_5kmgb")]
-position = Vector2(320, 120)
+position = Vector2(320, 121)
 collision_layer = 2
 collision_mask = 5
 
@@ -65,33 +70,41 @@ collision_mask = 2
 
 [node name="game_msg" type="Label" parent="UI"]
 unique_name_in_owner = true
-visible = false
-offset_left = 223.0
+offset_left = 172.0
 offset_top = 163.0
-offset_right = 426.0
+offset_right = 471.0
 offset_bottom = 280.0
 text = "Press space to start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="enemy_score" type="Label" parent="UI"]
+[node name="high_score" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 447.0
-offset_top = 51.0
-offset_right = 634.0
-offset_bottom = 74.0
-text = "default"
-horizontal_alignment = 2
+offset_left = 459.0
+offset_top = 48.0
+offset_right = 630.0
+offset_bottom = 71.0
+text = "high score = 00000000"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="player_score" type="Label" parent="UI"]
+[node name="current_score" type="Label" parent="UI"]
 unique_name_in_owner = true
-offset_left = 6.0
-offset_top = 51.0
-offset_right = 62.0
-offset_bottom = 74.0
-text = "default"
+offset_left = 9.0
+offset_top = 49.0
+offset_right = 203.0
+offset_bottom = 72.0
+text = "current score = 00000000"
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="life" type="TextureRect" parent="UI"]
+unique_name_in_owner = true
+offset_left = 14.0
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 52.0
+texture = SubResource("AtlasTexture_hg6dy")
 
 [node name="unpause_handler" type="Node" parent="."]
 process_mode = 2
