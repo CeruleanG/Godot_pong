@@ -19,8 +19,6 @@ extends Node2D
 
 # TODO Add a feature to have the score accumulates faster as the game goes on.
 
-# TODO Add a tutorial button so player can read about how to play the game
-
 # TODO Add a background art to the game
 
 # TODO Add a music to the game
@@ -36,6 +34,9 @@ var current_score = 0.0
 var another_life = true
 var red_rect = Rect2(2,20,13,12)
 var black_rect = Rect2(78,20,13,12)
+
+@onready var paused_menu: Control = %Paused_Menu
+
 
 const score_bonus = 20
 
@@ -118,3 +119,8 @@ func pause_with_msg(msg : String = "") -> void :
 	game_msg.show()
 	game_msg.text = msg
 	get_tree().paused = true
+
+
+func _on_how_to_play_pressed() -> void:
+	paused_menu.show()
+	pause_with_msg("Game Paused")

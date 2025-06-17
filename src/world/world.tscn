@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvqmiify8hqn2"]
+[gd_scene load_steps=12 format=3 uid="uid://bvqmiify8hqn2"]
 
 [ext_resource type="PackedScene" uid="uid://bughkjrnj1w1m" path="res://src/player_pad/playerPad.tscn" id="1_43c6p"]
 [ext_resource type="Script" uid="uid://gadpydbl2u3j" path="res://src/world/world.gd" id="1_l0av5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://xlqssur17tjl" path="res://src/world/pause_handler.gd" id="6_5kmgb"]
 [ext_resource type="PackedScene" uid="uid://cyfc4soxt842j" path="res://src/score_area/score_area.tscn" id="6_l0av5"]
 [ext_resource type="Texture2D" uid="uid://csrykq8pyrgmx" path="res://asset/hearts.png" id="6_wg6dd"]
+[ext_resource type="PackedScene" uid="uid://d3a0qo7lmn5hx" path="res://src/menu/paused_menu.tscn" id="7_wg6dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qwtu"]
 size = Vector2(8, 640)
@@ -106,9 +107,21 @@ offset_right = 40.0
 offset_bottom = 52.0
 texture = SubResource("AtlasTexture_hg6dy")
 
+[node name="How_to_play" type="Button" parent="UI"]
+process_mode = 3
+offset_left = 271.0
+offset_top = 14.0
+offset_right = 371.0
+offset_bottom = 45.0
+text = "How to Play"
+
+[node name="Paused_Menu" parent="UI" instance=ExtResource("7_wg6dd")]
+unique_name_in_owner = true
+
 [node name="unpause_handler" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("6_5kmgb")
 
 [connection signal="scored" from="walls/score_area_left" to="." method="_on_enemy_score"]
 [connection signal="scored" from="walls/score_area_right" to="." method="_on_player_score"]
+[connection signal="pressed" from="UI/How_to_play" to="." method="_on_how_to_play_pressed"]
