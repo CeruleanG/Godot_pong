@@ -93,7 +93,6 @@ func _on_player_score() -> void:
 
 func _process(delta: float) -> void:
 	current_score += delta * 5
-	print_debug(current_score)
 	current_score_label.text = "Current score = " + str(int(current_score)).pad_zeros(8)
 
 func _input(event: InputEvent) -> void:

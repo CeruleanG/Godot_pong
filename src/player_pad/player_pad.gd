@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED := 4.0
+const SPEED := 300
 
 func get_input_dir () -> float :
 	return Input.get_action_strength("down_key") - Input.get_action_strength("up_key")
@@ -8,6 +8,6 @@ func get_input_dir () -> float :
 
 func _physics_process(delta: float) -> void:
 	var dir := Vector2(0, get_input_dir())
-	var velocity = dir * SPEED
+	var velocity = dir * SPEED * delta
 	move_and_collide(velocity)
 	

@@ -23,16 +23,19 @@ script = ExtResource("1_l0av5")
 
 [node name="playerPad" parent="." instance=ExtResource("1_43c6p")]
 position = Vector2(40, 240)
-collision_mask = 4
+collision_mask = 6
+motion_mode = 1
 
 [node name="enemyPad" parent="." instance=ExtResource("2_l0av5")]
 position = Vector2(600, 240)
-collision_mask = 4
+collision_mask = 6
+motion_mode = 1
 
 [node name="ball" parent="." instance=ExtResource("3_5kmgb")]
 position = Vector2(320, 121)
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
 
 [node name="walls" type="StaticBody2D" parent="."]
 collision_layer = 4
