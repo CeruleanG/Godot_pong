@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brh77uvbg2nxh" path="res://asset/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_h5p7o"]
 
 [node name="enemyPad" type="CharacterBody2D"]
+scale = Vector2(0.558079, 1)
 script = ExtResource("1_h5p7o")
 
 [node name="Sprite2D" type="NinePatchRect" parent="."]

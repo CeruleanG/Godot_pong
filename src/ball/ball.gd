@@ -14,3 +14,6 @@ func _physics_process(delta: float) -> void:
 	if col:
 		velocity = velocity.bounce(col.get_normal())
 		velocity *= 1.05
+
+func _process(delta: float) -> void:
+	print_debug(position)
