@@ -1,27 +1,5 @@
 extends Node2D
 
-# INFO Basic game mechanic
-# A ball is launched to the left from the center top of the screen and bounces
-# against any physical object it touches (paddles and horizontal walls).
-#
-# The player controls the paddle on the left of the screen which is only able to
-# move between rigid walls vertically.
-#
-# The AI controls the paddle on the right of the screen which is also only able 
-# to move between rigid walls vertically. It alwasys adjust its position to be 
-# as close as possible relative to the ball in the vertical axis.
-#
-# A score value increments through time, whenever the ball touches the right side
-# of the screen, the scene resets while having the playing holding the current
-# score. If the ball touches the left side, however, the scene is reset but the 
-# score is not kept and reset to 0 while updating the highest score if necessary.
-# The game then loops back.
-
-# TODO Add a feature to have the score accumulates faster as the game goes on.
-
-# TODO Add a background art to the game
-
-# TODO Add a music to the game
 
 @onready var high_score_label: Label = %high_score
 var high_score = 0.0
@@ -87,8 +65,10 @@ func _ready() -> void:
 # Triggered upon the the ball touches the left/right side of the screen, which is 
 # defined as an "area2D" object. The latter emits a signal to call this function
 func _on_enemy_score() -> void:
+	$ball.goal_audio()
 	reset_the_scene(false)
 func _on_player_score() -> void:
+	$ball.goal_audio()
 	reset_the_scene(true)
 
 func _process(delta: float) -> void:

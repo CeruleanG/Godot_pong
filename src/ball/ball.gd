@@ -13,7 +13,8 @@ func _physics_process(delta: float) -> void:
 		# TODO Delete this velocity modifier
 	if col:
 		velocity = velocity.bounce(col.get_normal())
+		$bounce_SFX.play()
 		velocity *= 1.05
 
-func _process(delta: float) -> void:
-	print_debug(position)
+func  goal_audio() :
+	$goal_SFX.play()

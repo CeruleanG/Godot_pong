@@ -73,6 +73,15 @@ collision_mask = 2
 
 [node name="UI" type="Node" parent="."]
 
+[node name="background" type="ColorRect" parent="UI"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0430057, 0.0936696, 0.108116, 1)
+
 [node name="game_msg" type="Label" parent="UI"]
 unique_name_in_owner = true
 offset_left = 172.0
