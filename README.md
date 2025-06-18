@@ -18,12 +18,11 @@ upon losing their first goal), and resets it to 0 while updating the highest sco
 
 The game then loops back.
 
-# TODO list
-1. Add a feature to have the score accumulates faster as the game goes on.
+# Asset Credits
+This project used assets from online creators:
+	
+1. Sound effect: https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack
 
-2. Add a background music to the game
+2. UI sprite: https://cupnooble.itch.io/sprout-lands-asset-pack
 
-# Known Issue
-1. The ball's physic can be stucked within the collide box of a paddle. This might happen as the 
-ball is being squished between a wall and the paddle. When the issue occurs, the ball will be 
-stucked,  and upon release it will shoot itself off the screen.
+3. Heart sprite: https://atebits.itch.io/health-pack
